@@ -23,15 +23,28 @@
         "DMblmOZqYwMv",
         "L5yVaJFNZjSv"
       ],
-      "provenance": []
+      "provenance": [],
+      "include_colab_link": true
     }
   },
-  "nbformat_minor": 4,
+  "nbformat_minor": 0,
   "nbformat": 4,
   "cells": [
     {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/NazrinEminova/Machine-Learning-Model/blob/main/car_price_regression\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
       "cell_type": "code",
-      "source": "! kaggle datasets download sehriyarmemmedli/turboaz-cars-project",
+      "source": [
+        "! kaggle datasets download sehriyarmemmedli/turboaz-cars-project"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -50,11 +63,13 @@
           "text": "Dataset URL: https://www.kaggle.com/datasets/sehriyarmemmedli/turboaz-cars-project\n,License(s): unknown\n,Downloading turboaz-cars-project.zip to /content\n, 97% 234M/240M [00:01<00:00, 141MB/s]\n,100% 240M/240M [00:01<00:00, 140MB/s]\n"
         }
       ],
-      "execution_count": 1
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "! unzip '/content/turboaz-cars-project.zip'",
+      "source": [
+        "! unzip '/content/turboaz-cars-project.zip'"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -73,27 +88,37 @@
           "text": "Archive:  /content/turboaz-cars-project.zip\n,  inflating: cars.csv                \n"
         }
       ],
-      "execution_count": 2
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns",
+      "source": [
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt\n",
+        "import seaborn as sns"
+      ],
       "metadata": {
         "id": "1e9JQHcYbO-8"
       },
       "outputs": [],
-      "execution_count": 4
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "#DATA CLEANING",
+      "source": [
+        "#DATA CLEANING"
+      ],
       "metadata": {
         "id": "E032dy0GbO8I"
       }
     },
     {
       "cell_type": "code",
-      "source": "df = pd.read_csv('/content/cars.csv')\ndf.head()",
+      "source": [
+        "df = pd.read_csv('/content/cars.csv')\n",
+        "df.head()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -834,11 +859,14 @@
           "execution_count": 60
         }
       ],
-      "execution_count": 60
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "pd.set_option('display.max_columns', None)\ndf.head()",
+      "source": [
+        "pd.set_option('display.max_columns', None)\n",
+        "df.head()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -1579,11 +1607,13 @@
           "execution_count": 61
         }
       ],
-      "execution_count": 61
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df.info()",
+      "source": [
+        "df.info()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -1602,11 +1632,13 @@
           "text": "<class 'pandas.core.frame.DataFrame'>\n,RangeIndex: 653721 entries, 0 to 653720\n,Data columns (total 56 columns):\n, #   Column                    Non-Null Count   Dtype  \n,---  ------                    --------------   -----  \n, 0   id_x                      653721 non-null  object \n, 1   car_rel_url_x             653721 non-null  object \n, 2   datetime_scrape           653721 non-null  object \n, 3   name                      653721 non-null  object \n, 4   price_x                   653721 non-null  float64\n, 5   currency_x                653721 non-null  object \n, 6   datetime_product          653721 non-null  object \n, 7   city                      653721 non-null  object \n, 8   day                       653721 non-null  object \n, 9   hour                      653721 non-null  object \n, 10  attributes                653721 non-null  object \n, 11  production_year           653721 non-null  int64  \n, 12  engine_displacement_num   653721 non-null  float64\n, 13  engine_displacement_unit  647933 non-null  object \n, 14  kilometrage_num           653721 non-null  int64  \n, 15  kilometrage_unit          647933 non-null  object \n, 16  barter                    225553 non-null  object \n, 17  loan                      163340 non-null  object \n, 18  salon                     193339 non-null  object \n, 19  spare_parts               1762 non-null    object \n, 20  vip                       288941 non-null  object \n, 21  featured                  163835 non-null  object \n, 22  img_url                   653721 non-null  object \n, 23  id_y                      653721 non-null  object \n, 24  cars_id                   653721 non-null  object \n, 25  car_rel_url_y             653721 non-null  object \n, 26  datetime                  653721 non-null  object \n, 27  description               638192 non-null  object \n, 28  price_y                   653721 non-null  float64\n, 29  currency_y                653721 non-null  object \n, 30  owner_name                453496 non-null  object \n, 31  shop_name                 199960 non-null  object \n, 32  phone                     653456 non-null  float64\n, 33  updated                   653721 non-null  object \n, 34  views                     653721 non-null  int64  \n, 35  vin                       44271 non-null   object \n, 36  car_details_id_x          653721 non-null  object \n, 37  Ban növü                  653721 non-null  object \n, 38  Buraxılış ili             653721 non-null  int64  \n, 39  Hansı bazar üçün yığılıb  464216 non-null  object \n, 40  Marka                     653721 non-null  object \n, 41  Model                     653720 non-null  object \n, 42  Mühərrik                  653721 non-null  object \n, 43  Qəzalı                    1761 non-null    object \n, 44  Rəng                      653721 non-null  object \n, 45  Sahiblər                  432100 non-null  object \n, 46  Sürətlər qutusu           653721 non-null  object \n, 47  Vəziyyəti                 653718 non-null  object \n, 48  Yeni                      653721 non-null  object \n, 49  Yerlərin sayı             487890 non-null  object \n, 50  Yürüş                     653721 non-null  object \n, 51  Ötürücü                   653721 non-null  object \n, 52  Şəhər                     653721 non-null  object \n, 53  car_details_id_y          653721 non-null  object \n, 54  car_rel_url               653721 non-null  object \n, 55  extra_info                653721 non-null  object \n,dtypes: float64(4), int64(4), object(48)\n,memory usage: 279.3+ MB\n"
         }
       ],
-      "execution_count": 62
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df.describe()",
+      "source": [
+        "df.describe()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -1996,11 +2028,13 @@
           "execution_count": 63
         }
       ],
-      "execution_count": 63
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df.dtypes",
+      "source": [
+        "df.dtypes"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -2332,34 +2366,45 @@
           "execution_count": 64
         }
       ],
-      "execution_count": 64
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "Targeti tapmaqda lazımsız olan və ya təkrarlanan sütunları silirik",
+      "source": [
+        "Targeti tapmaqda lazımsız olan və ya təkrarlanan sütunları silirik"
+      ],
       "metadata": {
         "id": "DkcxaTcEe46R"
       }
     },
     {
       "cell_type": "code",
-      "source": "df = df.drop(columns = ['id_x', 'car_rel_url_x', 'datetime_scrape', 'datetime_product', 'engine_displacement_unit',\n                        'img_url', 'id_y', 'cars_id', 'car_rel_url_y', 'car_rel_url_y', 'datetime','description',\n                        'owner_name','phone', 'updated', 'day', 'hour', 'views','car_details_id_x', 'Şəhər',\n                        'car_details_id_y','car_rel_url','shop_name', 'vin','kilometrage_unit', 'attributes', 'name', 'spare_parts'])",
+      "source": [
+        "df = df.drop(columns = ['id_x', 'car_rel_url_x', 'datetime_scrape', 'datetime_product', 'engine_displacement_unit',\n",
+        "                        'img_url', 'id_y', 'cars_id', 'car_rel_url_y', 'car_rel_url_y', 'datetime','description',\n",
+        "                        'owner_name','phone', 'updated', 'day', 'hour', 'views','car_details_id_x', 'Şəhər',\n",
+        "                        'car_details_id_y','car_rel_url','shop_name', 'vin','kilometrage_unit', 'attributes', 'name', 'spare_parts'])"
+      ],
       "metadata": {
         "id": "O4o1WUB7bOw7"
       },
       "outputs": [],
-      "execution_count": 65
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "duplicate olan sətirləri tapırıq və silirik",
+      "source": [
+        "duplicate olan sətirləri tapırıq və silirik"
+      ],
       "metadata": {
         "id": "ndWpvvH_f1_Q"
       }
     },
     {
       "cell_type": "code",
-      "source": "df.duplicated().sum()",
+      "source": [
+        "df.duplicated().sum()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -2379,27 +2424,33 @@
           "execution_count": 66
         }
       ],
-      "execution_count": 66
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df.drop_duplicates(inplace=True)",
+      "source": [
+        "df.drop_duplicates(inplace=True)"
+      ],
       "metadata": {
         "id": "6vKPFYVD9GGn"
       },
       "outputs": [],
-      "execution_count": 67
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "Hər bir sütunda olan unique dəyərləri, onların sayını və null dəyərləri yoxlayırıq",
+      "source": [
+        "Hər bir sütunda olan unique dəyərləri, onların sayını və null dəyərləri yoxlayırıq"
+      ],
       "metadata": {
         "id": "yH1cdBiHgM7x"
       }
     },
     {
       "cell_type": "code",
-      "source": "df['Yeni'].unique()",
+      "source": [
+        "df['Yeni'].unique()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -2419,11 +2470,13 @@
           "execution_count": 68
         }
       ],
-      "execution_count": 68
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['Yeni'].nunique()",
+      "source": [
+        "df['Yeni'].nunique()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -2443,11 +2496,13 @@
           "execution_count": 69
         }
       ],
-      "execution_count": 69
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['Yeni'].isna().sum()",
+      "source": [
+        "df['Yeni'].isna().sum()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -2467,113 +2522,147 @@
           "execution_count": 70
         }
       ],
-      "execution_count": 70
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "Aşağadakı sütünlardaki dəyərlər hə, yox, vardir, yoxdur tipli dəyərlərdən ibarət olduğundan birini 1 digərini isə 0 la əvəz edirik",
+      "source": [
+        "Aşağadakı sütünlardaki dəyərlər hə, yox, vardir, yoxdur tipli dəyərlərdən ibarət olduğundan birini 1 digərini isə 0 la əvəz edirik"
+      ],
       "metadata": {
         "id": "-pzsamSAgpo0"
       }
     },
     {
       "cell_type": "code",
-      "source": "df['barter'] = df['barter'].apply(lambda x: 1 if x == 'Barter mümkündür' else 0)",
+      "source": [
+        "df['barter'] = df['barter'].apply(lambda x: 1 if x == 'Barter mümkündür' else 0)"
+      ],
       "metadata": {
         "id": "fMDVH_pFb8B3"
       },
       "outputs": [],
-      "execution_count": 71
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['loan'] = df['loan'].apply(lambda x: 1 if x == 'Kreditdədir' else 0)",
+      "source": [
+        "df['loan'] = df['loan'].apply(lambda x: 1 if x == 'Kreditdədir' else 0)"
+      ],
       "metadata": {
         "id": "fTp-kmKecB9m"
       },
       "outputs": [],
-      "execution_count": 72
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['salon'] = df['salon'].apply(lambda x: 1 if x == 'Salon' else 0)",
+      "source": [
+        "df['salon'] = df['salon'].apply(lambda x: 1 if x == 'Salon' else 0)"
+      ],
       "metadata": {
         "id": "Gn5WiANqcE-R"
       },
       "outputs": [],
-      "execution_count": 73
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['vip'] = df['vip'].apply(lambda x: 1 if x == 'vipped-icon' else 0)",
+      "source": [
+        "df['vip'] = df['vip'].apply(lambda x: 1 if x == 'vipped-icon' else 0)"
+      ],
       "metadata": {
         "id": "4ZYGmAJjcGG_"
       },
       "outputs": [],
-      "execution_count": 74
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['featured'] = df['featured'].apply(lambda x: 1 if x == 'featured-icon' else 0)",
+      "source": [
+        "df['featured'] = df['featured'].apply(lambda x: 1 if x == 'featured-icon' else 0)"
+      ],
       "metadata": {
         "id": "wVD4lHzGcF89"
       },
       "outputs": [],
-      "execution_count": 75
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['Qəzalı'] = df['Qəzalı'].apply(lambda x: 1 if x == 'Bəli' else 0)",
+      "source": [
+        "df['Qəzalı'] = df['Qəzalı'].apply(lambda x: 1 if x == 'Bəli' else 0)"
+      ],
       "metadata": {
         "id": "mDQJTVvJcFvm"
       },
       "outputs": [],
-      "execution_count": 76
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "Sütunlarda olan lazımsız text və işarələri silirik, objectdən intə çeviririk",
+      "source": [
+        "Sütunlarda olan lazımsız text və işarələri silirik, objectdən intə çeviririk"
+      ],
       "metadata": {
         "id": "C_3yT1TEhKPC"
       }
     },
     {
       "cell_type": "code",
-      "source": "df['Yerlərin sayı'] = df['Yerlərin sayı'].str.replace('+','')\ndf['Yerlərin sayı'] = df[df['Yerlərin sayı'].notna()]['Yerlərin sayı'].astype(int)",
+      "source": [
+        "df['Yerlərin sayı'] = df['Yerlərin sayı'].str.replace('+','')\n",
+        "df['Yerlərin sayı'] = df[df['Yerlərin sayı'].notna()]['Yerlərin sayı'].astype(int)"
+      ],
       "metadata": {
         "id": "6tudlpsqcRhU"
       },
       "outputs": [],
-      "execution_count": 77
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['Yürüş'] = df['Yürüş'].str.replace('km','',regex = True)\ndf['Yürüş'] = df['Yürüş'].str.replace(' ','',regex = True)\ndf['Yürüş'] = df['Yürüş'].astype(int)",
+      "source": [
+        "df['Yürüş'] = df['Yürüş'].str.replace('km','',regex = True)\n",
+        "df['Yürüş'] = df['Yürüş'].str.replace(' ','',regex = True)\n",
+        "df['Yürüş'] = df['Yürüş'].astype(int)"
+      ],
       "metadata": {
         "id": "vWMlCdAHbOtI"
       },
       "outputs": [],
-      "execution_count": 78
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['Sahiblər'] = df['Sahiblər'].str.replace(' və daha çox','',regex = True)\ndf['Sahiblər'] = df[df['Sahiblər'].notna()]['Sahiblər'].astype(int)",
+      "source": [
+        "df['Sahiblər'] = df['Sahiblər'].str.replace(' və daha çox','',regex = True)\n",
+        "df['Sahiblər'] = df[df['Sahiblər'].notna()]['Sahiblər'].astype(int)"
+      ],
       "metadata": {
         "id": "2kZ9reVXfe1N"
       },
       "outputs": [],
-      "execution_count": 79
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "Targetin digər numeric sütunlarla əlaqəsinə baxırıq",
+      "source": [
+        "Targetin digər numeric sütunlarla əlaqəsinə baxırıq"
+      ],
       "metadata": {
         "id": "TyUtO6EZhaNC"
       }
     },
     {
       "cell_type": "code",
-      "source": "\ncorrelation = df.select_dtypes(include=['float64', 'int64']).corr(method='pearson')\n\n# price_y ilə əlaqəni göstərmək\nprint(correlation['price_y'])\n",
+      "source": [
+        "\n",
+        "correlation = df.select_dtypes(include=['float64', 'int64']).corr(method='pearson')\n",
+        "\n",
+        "# price_y ilə əlaqəni göstərmək\n",
+        "print(correlation['price_y'])\n"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -2592,11 +2681,14 @@
           "text": "price_x                    0.999982\n,production_year           -0.031849\n,engine_displacement_num    0.293053\n,kilometrage_num           -0.278131\n,barter                     0.145581\n,loan                       0.057045\n,salon                      0.320857\n,vip                        0.183478\n,featured                   0.178809\n,price_y                    1.000000\n,Buraxılış ili              0.502354\n,Qəzalı                    -0.054692\n,Sahiblər                  -0.262087\n,Yerlərin sayı              0.172562\n,Yürüş                     -0.278202\n,Name: price_y, dtype: float64\n"
         }
       ],
-      "execution_count": 80
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "columns_df = [i for i in df.columns]\ncolumns_df",
+      "source": [
+        "columns_df = [i for i in df.columns]\n",
+        "columns_df"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -2648,18 +2740,23 @@
           "execution_count": 81
         }
       ],
-      "execution_count": 81
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "eyni dəyərlərə sahib sütunları silirik",
+      "source": [
+        "eyni dəyərlərə sahib sütunları silirik"
+      ],
       "metadata": {
         "id": "ELrscKQIhmC5"
       }
     },
     {
       "cell_type": "code",
-      "source": "different_prices = df[df['price_x'] != df['price_y']]\ndifferent_prices[['price_x','price_y']]",
+      "source": [
+        "different_prices = df[df['price_x'] != df['price_y']]\n",
+        "different_prices[['price_x','price_y']]"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -2996,88 +3093,118 @@
           "execution_count": 82
         }
       ],
-      "execution_count": 82
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df = df.drop(columns = ['price_x','currency_x'])",
+      "source": [
+        "df = df.drop(columns = ['price_x','currency_x'])"
+      ],
       "metadata": {
         "id": "cxXXNtYlbOlp"
       },
       "outputs": [],
-      "execution_count": 83
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "birdən çox dəyəri özündə birləşdirən sütunları sütunda mövcud olan işarədən istifadə edərək ayırırıq və ayrı ayrı sütunlar yaradırıq, ehtiyac olmayan sütunu silirik",
+      "source": [
+        "birdən çox dəyəri özündə birləşdirən sütunları sütunda mövcud olan işarədən istifadə edərək ayırırıq və ayrı ayrı sütunlar yaradırıq, ehtiyac olmayan sütunu silirik"
+      ],
       "metadata": {
         "id": "2PrDnncHhvRa"
       }
     },
     {
       "cell_type": "code",
-      "source": "df[['mühərrik_həcmi', 'güc', 'yanacaq_növü']] = df['Mühərrik'].str.split('/', n = 2,expand=True)",
+      "source": [
+        "df[['mühərrik_həcmi', 'güc', 'yanacaq_növü']] = df['Mühərrik'].str.split('/', n = 2,expand=True)"
+      ],
       "metadata": {
         "id": "pXA3yNsJbOjP"
       },
       "outputs": [],
-      "execution_count": 84
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df = df.drop(columns = ['Mühərrik'])",
+      "source": [
+        "df = df.drop(columns = ['Mühərrik'])"
+      ],
       "metadata": {
         "id": "ufgU3tswUpGa"
       },
       "outputs": [],
-      "execution_count": 85
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "unique_features = set()\nfor features in df['extra_info'].str.split('*'):\n    unique_features.update(features)\n\n\nunique_features = {feature.strip() for feature in unique_features}\n\nfor feature in unique_features:\n    df[feature] = df['extra_info'].apply(lambda x: 1 if feature in x else 0)\n\ndf.drop(columns=['extra_info'], inplace=True)",
+      "source": [
+        "unique_features = set()\n",
+        "for features in df['extra_info'].str.split('*'):\n",
+        "    unique_features.update(features)\n",
+        "\n",
+        "\n",
+        "unique_features = {feature.strip() for feature in unique_features}\n",
+        "\n",
+        "for feature in unique_features:\n",
+        "    df[feature] = df['extra_info'].apply(lambda x: 1 if feature in x else 0)\n",
+        "\n",
+        "df.drop(columns=['extra_info'], inplace=True)"
+      ],
       "metadata": {
         "id": "aO62LRBqbOhD"
       },
       "outputs": [],
-      "execution_count": 86
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "Sütunda fərqli və müqayisə olunabilməyən dəyərlərə sahib sətirləri silirik(bu hissə ediləbilər ama biz öyrənməmişik)",
+      "source": [
+        "Sütunda fərqli və müqayisə olunabilməyən dəyərlərə sahib sətirləri silirik(bu hissə ediləbilər ama biz öyrənməmişik)"
+      ],
       "metadata": {
         "id": "RLsHhZUjiLSm"
       }
     },
     {
       "cell_type": "code",
-      "source": "df = df[~df['mühərrik_həcmi'].str.contains('sm')]",
+      "source": [
+        "df = df[~df['mühərrik_həcmi'].str.contains('sm')]"
+      ],
       "metadata": {
         "id": "1YH_xGGFTlLP"
       },
       "outputs": [],
-      "execution_count": 87
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df = df[~df['güc'].str.contains('Elektro')]",
+      "source": [
+        "df = df[~df['güc'].str.contains('Elektro')]"
+      ],
       "metadata": {
         "id": "u8o1r5joToZq"
       },
       "outputs": [],
-      "execution_count": 88
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df = df[~df['mühərrik_həcmi'].str.contains('Elektro')]",
+      "source": [
+        "df = df[~df['mühərrik_həcmi'].str.contains('Elektro')]"
+      ],
       "metadata": {
         "id": "u4DKtdHpU-bg"
       },
       "outputs": [],
-      "execution_count": 89
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df",
+      "source": [
+        "df"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -4037,27 +4164,33 @@
           "execution_count": 90
         }
       ],
-      "execution_count": 90
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "City sütununda əsas Bakı dəyəri fərq yaratdığından, Bakını 1 digərlərini isə 0la əvəz edirik",
+      "source": [
+        "City sütununda əsas Bakı dəyəri fərq yaratdığından, Bakını 1 digərlərini isə 0la əvəz edirik"
+      ],
       "metadata": {
         "id": "4zqEaJq0iiva"
       }
     },
     {
       "cell_type": "code",
-      "source": "df['city'] = df['city'].apply(lambda x:1 if x == 'bakı' else 0)",
+      "source": [
+        "df['city'] = df['city'].apply(lambda x:1 if x == 'bakı' else 0)"
+      ],
       "metadata": {
         "id": "8W_nCtMIreuY"
       },
       "outputs": [],
-      "execution_count": 91
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df",
+      "source": [
+        "df"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -5021,20 +5154,27 @@
           "execution_count": 92
         }
       ],
-      "execution_count": 92
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['güc'] = df['güc'].str.replace('a.g.','',regex = True)\ndf['güc'] = df['güc'].str.replace(' ','',regex = True)\ndf['güc'] = df['güc'].astype(int)",
+      "source": [
+        "df['güc'] = df['güc'].str.replace('a.g.','',regex = True)\n",
+        "df['güc'] = df['güc'].str.replace(' ','',regex = True)\n",
+        "df['güc'] = df['güc'].astype(int)"
+      ],
       "metadata": {
         "id": "39ebskZrS4a2"
       },
       "outputs": [],
-      "execution_count": 93
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['mühərrik_həcmi'] = df['mühərrik_həcmi'].str.replace('L','',regex = True)\ndf['mühərrik_həcmi'] = df['mühərrik_həcmi'].str.replace(' ','',regex = True)",
+      "source": [
+        "df['mühərrik_həcmi'] = df['mühərrik_həcmi'].str.replace('L','',regex = True)\n",
+        "df['mühərrik_həcmi'] = df['mühərrik_həcmi'].str.replace(' ','',regex = True)"
+      ],
       "metadata": {
         "collapsed": true,
         "id": "10hZyjnbS5bL",
@@ -5043,27 +5183,48 @@
         }
       },
       "outputs": [],
-      "execution_count": 94
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df['mühərrik_həcmi'] = df['mühərrik_həcmi'].astype(float)\n\ndf['mühərrik_həcmi'] = df['mühərrik_həcmi'].astype(int)",
+      "source": [
+        "df['mühərrik_həcmi'] = df['mühərrik_həcmi'].astype(float)\n",
+        "\n",
+        "df['mühərrik_həcmi'] = df['mühərrik_həcmi'].astype(int)"
+      ],
       "metadata": {
         "id": "5b2M3Kzekkj6"
       },
       "outputs": [],
-      "execution_count": 95
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "bütün qiymətləri eyni məzənnəyə gətiririk",
+      "source": [
+        "bütün qiymətləri eyni məzənnəyə gətiririk"
+      ],
       "metadata": {
         "id": "sJK2i0LAi6er"
       }
     },
     {
       "cell_type": "code",
-      "source": "df = df.copy()\n\nconversion_rates = {\n    'AZN': 1,\n    'USD': 1.7,\n    'EUR': 1.75\n}\n\ndf['price_in_azn'] = df.apply(\n    lambda row: row['price_y'] * conversion_rates.get(row['currency_y'], 1) if pd.notnull(row['price_y']) else None,\n    axis=1\n)\n\ndf[['price_y', 'currency_y', 'price_in_azn']].head()",
+      "source": [
+        "df = df.copy()\n",
+        "\n",
+        "conversion_rates = {\n",
+        "    'AZN': 1,\n",
+        "    'USD': 1.7,\n",
+        "    'EUR': 1.75\n",
+        "}\n",
+        "\n",
+        "df['price_in_azn'] = df.apply(\n",
+        "    lambda row: row['price_y'] * conversion_rates.get(row['currency_y'], 1) if pd.notnull(row['price_y']) else None,\n",
+        "    axis=1\n",
+        ")\n",
+        "\n",
+        "df[['price_y', 'currency_y', 'price_in_azn']].head()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -5367,47 +5528,57 @@
           "execution_count": 96
         }
       ],
-      "execution_count": 96
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df = df.drop(columns = ['price_y', 'currency_y'])",
+      "source": [
+        "df = df.drop(columns = ['price_y', 'currency_y'])"
+      ],
       "metadata": {
         "id": "MmG6OEANgN6W"
       },
       "outputs": [],
-      "execution_count": 97
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df.loc[df['Sahiblər'].notna(), 'Sahiblər'] = df['Sahiblər'].loc[df['Sahiblər'].notna()].astype(int)",
+      "source": [
+        "df.loc[df['Sahiblər'].notna(), 'Sahiblər'] = df['Sahiblər'].loc[df['Sahiblər'].notna()].astype(int)"
+      ],
       "metadata": {
         "id": "iP7UMbj6gNzL"
       },
       "outputs": [],
-      "execution_count": 98
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df.loc[df['Yerlərin sayı'].notna(), 'Yerlərin sayı'] = df['Yerlərin sayı'].loc[df['Yerlərin sayı'].notna()].astype(int)",
+      "source": [
+        "df.loc[df['Yerlərin sayı'].notna(), 'Yerlərin sayı'] = df['Yerlərin sayı'].loc[df['Yerlərin sayı'].notna()].astype(int)"
+      ],
       "metadata": {
         "id": "Xw8PSQWRgNv0"
       },
       "outputs": [],
-      "execution_count": 99
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df = df.drop(columns = ['production_year'])",
+      "source": [
+        "df = df.drop(columns = ['production_year'])"
+      ],
       "metadata": {
         "id": "o0TLJYMHA2ex"
       },
       "outputs": [],
-      "execution_count": 100
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df",
+      "source": [
+        "df"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -6343,27 +6514,33 @@
           "execution_count": 101
         }
       ],
-      "execution_count": 101
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "sütun adlarında lazımsız boşluq olduqda silir",
+      "source": [
+        "sütun adlarında lazımsız boşluq olduqda silir"
+      ],
       "metadata": {
         "id": "jr4hTF66jFuz"
       }
     },
     {
       "cell_type": "code",
-      "source": "df.columns = df.columns.str.strip()",
+      "source": [
+        "df.columns = df.columns.str.strip()"
+      ],
       "metadata": {
         "id": "iXXNYakuULXS"
       },
       "outputs": [],
-      "execution_count": 102
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df.info()",
+      "source": [
+        "df.info()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -6378,11 +6555,13 @@
           "text": "<class 'pandas.core.frame.DataFrame'>\n,Index: 244405 entries, 0 to 653720\n,Data columns (total 39 columns):\n, #   Column                        Non-Null Count   Dtype  \n,---  ------                        --------------   -----  \n, 0   city                          244405 non-null  int64  \n, 1   engine_displacement_num       244405 non-null  float64\n, 2   kilometrage_num               244405 non-null  int64  \n, 3   barter                        244405 non-null  int64  \n, 4   loan                          244405 non-null  int64  \n, 5   salon                         244405 non-null  int64  \n, 6   vip                           244405 non-null  int64  \n, 7   featured                      244405 non-null  int64  \n, 8   Ban növü                      244405 non-null  object \n, 9   Buraxılış ili                 244405 non-null  int64  \n, 10  Hansı bazar üçün yığılıb      174663 non-null  object \n, 11  Marka                         244405 non-null  object \n, 12  Model                         244404 non-null  object \n, 13  Qəzalı                        244405 non-null  int64  \n, 14  Rəng                          244405 non-null  object \n, 15  Sahiblər                      171564 non-null  float64\n, 16  Sürətlər qutusu               244405 non-null  object \n, 17  Vəziyyəti                     244402 non-null  object \n, 18  Yeni                          244405 non-null  object \n, 19  Yerlərin sayı                 184087 non-null  float64\n, 20  Yürüş                         244405 non-null  int64  \n, 21  Ötürücü                       244405 non-null  object \n, 22  mühərrik_həcmi                244405 non-null  int64  \n, 23  güc                           244405 non-null  int64  \n, 24  yanacaq_növü                  244405 non-null  object \n, 25  Park radarı                   244405 non-null  int64  \n, 26  Yan pərdələr                  244405 non-null  int64  \n, 27  Mərkəzi qapanma               244405 non-null  int64  \n, 28  ABS                           244405 non-null  int64  \n, 29  Dəri salon                    244405 non-null  int64  \n, 30  Arxa görüntü kamerası         244405 non-null  int64  \n, 31  Yüngül lehimli disklər        244405 non-null  int64  \n, 32  Lyuk                          244405 non-null  int64  \n, 33  Oturacaqların isidilməsi      244405 non-null  int64  \n, 34  Kondisioner                   244405 non-null  int64  \n, 35  Yağış sensoru                 244405 non-null  int64  \n, 36  Oturacaqların ventilyasiyası  244405 non-null  int64  \n, 37  Ksenon lampalar               244405 non-null  int64  \n, 38  price_in_azn                  244405 non-null  float64\n,dtypes: float64(4), int64(25), object(10)\n,memory usage: 74.6+ MB\n"
         }
       ],
-      "execution_count": 103
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df.duplicated().sum()",
+      "source": [
+        "df.duplicated().sum()"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -6402,27 +6581,48 @@
           "execution_count": 104
         }
       ],
-      "execution_count": 104
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "df.drop_duplicates(inplace=True)",
+      "source": [
+        "df.drop_duplicates(inplace=True)"
+      ],
       "metadata": {
         "id": "CzXA5sIRYrrB"
       },
       "outputs": [],
-      "execution_count": 105
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "#Visualisation",
+      "source": [
+        "#Visualisation"
+      ],
       "metadata": {
         "id": "D9rnpJOTn31E"
       }
     },
     {
       "cell_type": "code",
-      "source": "import seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Numerik sütunları seçirik\nnumeric_columns = df.select_dtypes(include=['int64', 'float64']).columns\n\n# Korrelyasiya matrisini hesablayırıq\ncorr_matrix = df[numeric_columns].corr()\n\n# Korrelyasiya matrisinin vizuallaşdırılması\nplt.figure(figsize=(16, 14))\nsns.heatmap(corr_matrix, annot=True, fmt=\".2f\", cmap=\"coolwarm\", center=0, annot_kws={\"size\": 10})\nplt.title(\"Correlation Heatmap\", fontsize=20)\nplt.xticks(fontsize=12)\nplt.yticks(fontsize=12)\nplt.show()\n",
+      "source": [
+        "import seaborn as sns\n",
+        "import matplotlib.pyplot as plt\n",
+        "\n",
+        "# Numerik sütunları seçirik\n",
+        "numeric_columns = df.select_dtypes(include=['int64', 'float64']).columns\n",
+        "\n",
+        "# Korrelyasiya matrisini hesablayırıq\n",
+        "corr_matrix = df[numeric_columns].corr()\n",
+        "\n",
+        "# Korrelyasiya matrisinin vizuallaşdırılması\n",
+        "plt.figure(figsize=(16, 14))\n",
+        "sns.heatmap(corr_matrix, annot=True, fmt=\".2f\", cmap=\"coolwarm\", center=0, annot_kws={\"size\": 10})\n",
+        "plt.title(\"Correlation Heatmap\", fontsize=20)\n",
+        "plt.xticks(fontsize=12)\n",
+        "plt.yticks(fontsize=12)\n",
+        "plt.show()\n"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -6447,11 +6647,19 @@
           "metadata": {}
         }
       ],
-      "execution_count": 106
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "plt.figure(figsize=(12, 6))\nsns.histplot(df['price_in_azn'], kde=True, color='royalblue', bins=40)\nplt.title('Distribusiya - Price in AZN', fontsize=18, weight='bold')\nplt.xlabel('Price in AZN', fontsize=16)\nplt.ylabel('Frequency', fontsize=16)\nplt.grid(True)\nplt.show()\n",
+      "source": [
+        "plt.figure(figsize=(12, 6))\n",
+        "sns.histplot(df['price_in_azn'], kde=True, color='royalblue', bins=40)\n",
+        "plt.title('Distribusiya - Price in AZN', fontsize=18, weight='bold')\n",
+        "plt.xlabel('Price in AZN', fontsize=16)\n",
+        "plt.ylabel('Frequency', fontsize=16)\n",
+        "plt.grid(True)\n",
+        "plt.show()\n"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -6476,70 +6684,119 @@
           "metadata": {}
         }
       ],
-      "execution_count": 107
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "# Data preprocessing",
+      "source": [
+        "# Data preprocessing"
+      ],
       "metadata": {
         "id": "DMblmOZqYwMv"
       }
     },
     {
       "cell_type": "code",
-      "source": "sampled_df = df.sample(n = 100_000, random_state = 42)",
+      "source": [
+        "sampled_df = df.sample(n = 100_000, random_state = 42)"
+      ],
       "metadata": {
         "id": "fEoOHJkV_6OD"
       },
       "outputs": [],
-      "execution_count": 108
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "X = sampled_df.drop('price_in_azn', axis=1)\ny = sampled_df['price_in_azn'].copy()",
+      "source": [
+        "X = sampled_df.drop('price_in_azn', axis=1)\n",
+        "y = sampled_df['price_in_azn'].copy()"
+      ],
       "metadata": {
         "id": "K1QqycRJ-cSm"
       },
       "outputs": [],
-      "execution_count": 109
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.model_selection import train_test_split\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)",
+      "source": [
+        "from sklearn.model_selection import train_test_split\n",
+        "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)"
+      ],
       "metadata": {
         "id": "n0F-JsOp-YhA"
       },
       "outputs": [],
-      "execution_count": 110
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "\nnum_features = X.select_dtypes('number').columns\ncat_features = X.select_dtypes('object').columns",
+      "source": [
+        "\n",
+        "num_features = X.select_dtypes('number').columns\n",
+        "cat_features = X.select_dtypes('object').columns"
+      ],
       "metadata": {
         "id": "P9DxPGJqs6k_"
       },
       "outputs": [],
-      "execution_count": 111
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.pipeline import make_pipeline\nfrom sklearn.impute import SimpleImputer\nfrom sklearn.preprocessing import OneHotEncoder, StandardScaler, FunctionTransformer\nfrom sklearn.compose import ColumnTransformer\nimport numpy as np\n\ncat_pipeline = make_pipeline(\n    SimpleImputer(strategy=\"most_frequent\"),\n    OneHotEncoder(handle_unknown=\"ignore\")\n)\n\nnum_pipeline = make_pipeline(\n    SimpleImputer(strategy=\"median\"),\n    StandardScaler()\n)\n\npreprocessing = ColumnTransformer(\n    transformers = [\n        ('num', num_pipeline, num_features),\n        ('cat', cat_pipeline, cat_features)\n\n    ]\n)",
+      "source": [
+        "from sklearn.pipeline import make_pipeline\n",
+        "from sklearn.impute import SimpleImputer\n",
+        "from sklearn.preprocessing import OneHotEncoder, StandardScaler, FunctionTransformer\n",
+        "from sklearn.compose import ColumnTransformer\n",
+        "import numpy as np\n",
+        "\n",
+        "cat_pipeline = make_pipeline(\n",
+        "    SimpleImputer(strategy=\"most_frequent\"),\n",
+        "    OneHotEncoder(handle_unknown=\"ignore\")\n",
+        ")\n",
+        "\n",
+        "num_pipeline = make_pipeline(\n",
+        "    SimpleImputer(strategy=\"median\"),\n",
+        "    StandardScaler()\n",
+        ")\n",
+        "\n",
+        "preprocessing = ColumnTransformer(\n",
+        "    transformers = [\n",
+        "        ('num', num_pipeline, num_features),\n",
+        "        ('cat', cat_pipeline, cat_features)\n",
+        "\n",
+        "    ]\n",
+        ")"
+      ],
       "metadata": {
         "id": "HXaa2Yy-hmh2"
       },
       "outputs": [],
-      "execution_count": 112
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "# Base model",
+      "source": [
+        "# Base model"
+      ],
       "metadata": {
         "id": "L5yVaJFNZjSv"
       }
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.pipeline import make_pipeline\nfrom sklearn.linear_model import LinearRegression\n\nlin_reg = LinearRegression()\n\nfull_pipeline_lr = make_pipeline(preprocessing, lin_reg)\n\nfull_pipeline_lr.fit(X_train, y_train)",
+      "source": [
+        "from sklearn.pipeline import make_pipeline\n",
+        "from sklearn.linear_model import LinearRegression\n",
+        "\n",
+        "lin_reg = LinearRegression()\n",
+        "\n",
+        "full_pipeline_lr = make_pipeline(preprocessing, lin_reg)\n",
+        "\n",
+        "full_pipeline_lr.fit(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -7062,11 +7319,13 @@
           "execution_count": 57
         }
       ],
-      "execution_count": 57
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "full_pipeline_lr.score(X_train, y_train)",
+      "source": [
+        "full_pipeline_lr.score(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -7086,11 +7345,13 @@
           "execution_count": 58
         }
       ],
-      "execution_count": 58
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "full_pipeline_lr.score(X_test, y_test)",
+      "source": [
+        "full_pipeline_lr.score(X_test, y_test)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -7110,25 +7371,33 @@
           "execution_count": 59
         }
       ],
-      "execution_count": 59
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "Cross-Validation",
+      "source": [
+        "Cross-Validation"
+      ],
       "metadata": {
         "id": "xTaeP53EZdMZ"
       }
     },
     {
       "cell_type": "markdown",
-      "source": "Həmişə eyni train və test üzərində yoxlamaq nəticəni tam anlamağa kömək etməyə bilər. Bu səbədən cross validation ilə datanı müəyyən hissəyə bölürük, məsələn 3 hissəyə bölündüyü üçün 2ində train edib 1nde test edirik",
+      "source": [
+        "Həmişə eyni train və test üzərində yoxlamaq nəticəni tam anlamağa kömək etməyə bilər. Bu səbədən cross validation ilə datanı müəyyən hissəyə bölürük, məsələn 3 hissəyə bölündüyü üçün 2ində train edib 1nde test edirik"
+      ],
       "metadata": {
         "id": "qa3wndDfaHmA"
       }
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.model_selection import cross_val_score\nscores = cross_val_score(full_pipeline_lr, X, y, cv=3, scoring='r2')\nnp.mean(scores)",
+      "source": [
+        "from sklearn.model_selection import cross_val_score\n",
+        "scores = cross_val_score(full_pipeline_lr, X, y, cv=3, scoring='r2')\n",
+        "np.mean(scores)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -7148,18 +7417,26 @@
           "execution_count": 60
         }
       ],
-      "execution_count": 60
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "Predict edilən dəyərlərlə əsil dəyərlər arasındakı fərqin ortalamsını tapır. nə qədər az olarsa demək ki o qədər az səhv edilib",
+      "source": [
+        "Predict edilən dəyərlərlə əsil dəyərlər arasındakı fərqin ortalamsını tapır. nə qədər az olarsa demək ki o qədər az səhv edilib"
+      ],
       "metadata": {
         "id": "nbxEUlt8bHGJ"
       }
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.metrics import mean_absolute_error\n\ny_pred = full_pipeline_lr.predict(X_test)\nmae = mean_absolute_error(y_test, y_pred)\nmae",
+      "source": [
+        "from sklearn.metrics import mean_absolute_error\n",
+        "\n",
+        "y_pred = full_pipeline_lr.predict(X_test)\n",
+        "mae = mean_absolute_error(y_test, y_pred)\n",
+        "mae"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -7179,18 +7456,26 @@
           "execution_count": 61
         }
       ],
-      "execution_count": 61
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "# DecisionTreeRegressor model",
+      "source": [
+        "# DecisionTreeRegressor model"
+      ],
       "metadata": {
         "id": "2uJDVBsLZokV"
       }
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.tree import DecisionTreeRegressor\n\ntree_reg = DecisionTreeRegressor(random_state = 42)\nfull_pipeline_tree = make_pipeline(preprocessing, tree_reg)\nfull_pipeline_tree.fit(X_train, y_train)",
+      "source": [
+        "from sklearn.tree import DecisionTreeRegressor\n",
+        "\n",
+        "tree_reg = DecisionTreeRegressor(random_state = 42)\n",
+        "full_pipeline_tree = make_pipeline(preprocessing, tree_reg)\n",
+        "full_pipeline_tree.fit(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -7710,11 +7995,13 @@
           "execution_count": 62
         }
       ],
-      "execution_count": 62
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "full_pipeline_tree.score(X_test, y_test)",
+      "source": [
+        "full_pipeline_tree.score(X_test, y_test)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -7734,11 +8021,13 @@
           "execution_count": 63
         }
       ],
-      "execution_count": 63
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "full_pipeline_tree.score(X_train, y_train)",
+      "source": [
+        "full_pipeline_tree.score(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -7758,11 +8047,15 @@
           "execution_count": 64
         }
       ],
-      "execution_count": 64
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.model_selection import cross_val_score\nscores = cross_val_score(full_pipeline_tree, X, y, cv=3, scoring='r2')\nnp.mean(scores)",
+      "source": [
+        "from sklearn.model_selection import cross_val_score\n",
+        "scores = cross_val_score(full_pipeline_tree, X, y, cv=3, scoring='r2')\n",
+        "np.mean(scores)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -7782,11 +8075,17 @@
           "execution_count": 65
         }
       ],
-      "execution_count": 65
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.metrics import mean_absolute_error\n\ny_pred = full_pipeline_tree.predict(X_test)\nmae = mean_absolute_error(y_test, y_pred)\nmae",
+      "source": [
+        "from sklearn.metrics import mean_absolute_error\n",
+        "\n",
+        "y_pred = full_pipeline_tree.predict(X_test)\n",
+        "mae = mean_absolute_error(y_test, y_pred)\n",
+        "mae"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -7806,18 +8105,34 @@
           "execution_count": 66
         }
       ],
-      "execution_count": 66
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "# RandomForestRegressor model",
+      "source": [
+        "# RandomForestRegressor model"
+      ],
       "metadata": {
         "id": "qJSKAm16b7R2"
       }
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.ensemble import RandomForestRegressor\n\nforest_reg = RandomForestRegressor(\n    n_estimators=100,\n    max_depth=10,\n    min_samples_split=10,\n    min_samples_leaf=3,\n    random_state=42\n)\n\nfull_pipeline_forest = make_pipeline(preprocessing, forest_reg)\n\nfull_pipeline_forest.fit(X_train, y_train)",
+      "source": [
+        "from sklearn.ensemble import RandomForestRegressor\n",
+        "\n",
+        "forest_reg = RandomForestRegressor(\n",
+        "    n_estimators=100,\n",
+        "    max_depth=10,\n",
+        "    min_samples_split=10,\n",
+        "    min_samples_leaf=3,\n",
+        "    random_state=42\n",
+        ")\n",
+        "\n",
+        "full_pipeline_forest = make_pipeline(preprocessing, forest_reg)\n",
+        "\n",
+        "full_pipeline_forest.fit(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -8338,11 +8653,13 @@
           "execution_count": 67
         }
       ],
-      "execution_count": 67
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "full_pipeline_forest.score(X_test, y_test)",
+      "source": [
+        "full_pipeline_forest.score(X_test, y_test)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -8362,11 +8679,13 @@
           "execution_count": 68
         }
       ],
-      "execution_count": 68
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "full_pipeline_forest.score(X_train, y_train)",
+      "source": [
+        "full_pipeline_forest.score(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -8386,11 +8705,15 @@
           "execution_count": 69
         }
       ],
-      "execution_count": 69
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.model_selection import cross_val_score\nscores = cross_val_score(full_pipeline_forest, X, y, cv=3, scoring='r2')\nnp.mean(scores)",
+      "source": [
+        "from sklearn.model_selection import cross_val_score\n",
+        "scores = cross_val_score(full_pipeline_forest, X, y, cv=3, scoring='r2')\n",
+        "np.mean(scores)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -8410,11 +8733,17 @@
           "execution_count": 70
         }
       ],
-      "execution_count": 70
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.metrics import mean_absolute_error\n\ny_pred = full_pipeline_forest.predict(X_test)\nmae = mean_absolute_error(y_test, y_pred)\nmae",
+      "source": [
+        "from sklearn.metrics import mean_absolute_error\n",
+        "\n",
+        "y_pred = full_pipeline_forest.predict(X_test)\n",
+        "mae = mean_absolute_error(y_test, y_pred)\n",
+        "mae"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -8434,25 +8763,81 @@
           "execution_count": 71
         }
       ],
-      "execution_count": 71
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "# RandomizedSearchCV and DecisionTreeRegressor",
+      "source": [
+        "# RandomizedSearchCV and DecisionTreeRegressor"
+      ],
       "metadata": {
         "id": "MQ90L-SRbPWi"
       }
     },
     {
       "cell_type": "markdown",
-      "source": "Daha sürətli olmasə üçün RandomizedSearchCVdən istifadə etdik",
+      "source": [
+        "Daha sürətli olmasə üçün RandomizedSearchCVdən istifadə etdik"
+      ],
       "metadata": {
         "id": "FMvHcX2vY_qW"
       }
     },
     {
       "cell_type": "code",
-      "source": "import numpy as np\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.impute import SimpleImputer\nfrom sklearn.preprocessing import OneHotEncoder\nfrom sklearn.tree import DecisionTreeRegressor\nfrom sklearn.model_selection import RandomizedSearchCV\n\nnp.random.seed(42)\n\nnum_features = X.select_dtypes('number').columns\ncat_features = X.select_dtypes('object').columns\n\nnum_pipeline = Pipeline([\n    ('imputer', SimpleImputer(strategy='median'))\n])\n\ncat_pipeline = Pipeline([\n    ('imputer', SimpleImputer(strategy='most_frequent')),\n    ('onehot', OneHotEncoder(handle_unknown='ignore'))\n])\n\npreprocessing = ColumnTransformer([\n    ('num', num_pipeline, num_features),\n    ('cat', cat_pipeline, cat_features)\n], sparse_threshold=0.0)\n\nfull_pipeline_tree = Pipeline([\n    ('preprocessing', preprocessing),\n    ('decisiontreeregressor', DecisionTreeRegressor(random_state=42))\n])\n\nparam_dist = {\n    'decisiontreeregressor__max_depth': np.random.randint(1, 51, size=10),\n    'decisiontreeregressor__min_samples_split': np.random.randint(2, 51, size=10),\n    'decisiontreeregressor__min_samples_leaf': np.random.randint(2, 51, size=10),\n}\n\nrandom_search = RandomizedSearchCV(\n    full_pipeline_tree,\n    param_distributions=param_dist,\n    n_iter=50,\n    scoring=\"r2\",\n    cv=3,\n    verbose=2,\n    n_jobs=-1,\n    random_state=42\n)\n\nrandom_search.fit(X_train, y_train)\nrandom_search.best_params_",
+      "source": [
+        "import numpy as np\n",
+        "from sklearn.pipeline import Pipeline\n",
+        "from sklearn.compose import ColumnTransformer\n",
+        "from sklearn.impute import SimpleImputer\n",
+        "from sklearn.preprocessing import OneHotEncoder\n",
+        "from sklearn.tree import DecisionTreeRegressor\n",
+        "from sklearn.model_selection import RandomizedSearchCV\n",
+        "\n",
+        "np.random.seed(42)\n",
+        "\n",
+        "num_features = X.select_dtypes('number').columns\n",
+        "cat_features = X.select_dtypes('object').columns\n",
+        "\n",
+        "num_pipeline = Pipeline([\n",
+        "    ('imputer', SimpleImputer(strategy='median'))\n",
+        "])\n",
+        "\n",
+        "cat_pipeline = Pipeline([\n",
+        "    ('imputer', SimpleImputer(strategy='most_frequent')),\n",
+        "    ('onehot', OneHotEncoder(handle_unknown='ignore'))\n",
+        "])\n",
+        "\n",
+        "preprocessing = ColumnTransformer([\n",
+        "    ('num', num_pipeline, num_features),\n",
+        "    ('cat', cat_pipeline, cat_features)\n",
+        "], sparse_threshold=0.0)\n",
+        "\n",
+        "full_pipeline_tree = Pipeline([\n",
+        "    ('preprocessing', preprocessing),\n",
+        "    ('decisiontreeregressor', DecisionTreeRegressor(random_state=42))\n",
+        "])\n",
+        "\n",
+        "param_dist = {\n",
+        "    'decisiontreeregressor__max_depth': np.random.randint(1, 51, size=10),\n",
+        "    'decisiontreeregressor__min_samples_split': np.random.randint(2, 51, size=10),\n",
+        "    'decisiontreeregressor__min_samples_leaf': np.random.randint(2, 51, size=10),\n",
+        "}\n",
+        "\n",
+        "random_search = RandomizedSearchCV(\n",
+        "    full_pipeline_tree,\n",
+        "    param_distributions=param_dist,\n",
+        "    n_iter=50,\n",
+        "    scoring=\"r2\",\n",
+        "    cv=3,\n",
+        "    verbose=2,\n",
+        "    n_jobs=-1,\n",
+        "    random_state=42\n",
+        ")\n",
+        "\n",
+        "random_search.fit(X_train, y_train)\n",
+        "random_search.best_params_"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -8479,11 +8864,25 @@
           "execution_count": 73
         }
       ],
-      "execution_count": 73
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.pipeline import make_pipeline\nfrom sklearn.tree import DecisionTreeRegressor\n\nbest_tree_reg = DecisionTreeRegressor(\n    max_depth=39,\n    min_samples_split=25,\n    min_samples_leaf=3,\n    random_state=42\n)\n\noptimized_pipeline_tree = make_pipeline(preprocessing, best_tree_reg)\n\noptimized_pipeline_tree.fit(X_train, y_train)",
+      "source": [
+        "from sklearn.pipeline import make_pipeline\n",
+        "from sklearn.tree import DecisionTreeRegressor\n",
+        "\n",
+        "best_tree_reg = DecisionTreeRegressor(\n",
+        "    max_depth=39,\n",
+        "    min_samples_split=25,\n",
+        "    min_samples_leaf=3,\n",
+        "    random_state=42\n",
+        ")\n",
+        "\n",
+        "optimized_pipeline_tree = make_pipeline(preprocessing, best_tree_reg)\n",
+        "\n",
+        "optimized_pipeline_tree.fit(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -9004,11 +9403,13 @@
           "execution_count": 75
         }
       ],
-      "execution_count": 75
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "optimized_pipeline_tree.score(X_train, y_train)",
+      "source": [
+        "optimized_pipeline_tree.score(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -9028,11 +9429,13 @@
           "execution_count": 85
         }
       ],
-      "execution_count": 85
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "optimized_pipeline_tree.score(X_test, y_test)",
+      "source": [
+        "optimized_pipeline_tree.score(X_test, y_test)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -9052,11 +9455,15 @@
           "execution_count": 86
         }
       ],
-      "execution_count": 86
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.model_selection import cross_val_score\nscores = cross_val_score(optimized_pipeline_tree, X, y, cv=3, scoring='r2')\nnp.mean(scores)",
+      "source": [
+        "from sklearn.model_selection import cross_val_score\n",
+        "scores = cross_val_score(optimized_pipeline_tree, X, y, cv=3, scoring='r2')\n",
+        "np.mean(scores)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -9076,11 +9483,17 @@
           "execution_count": 78
         }
       ],
-      "execution_count": 78
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.metrics import mean_absolute_error\n\ny_pred = optimized_pipeline_tree.predict(X_test)\nmae = mean_absolute_error(y_test, y_pred)\nmae",
+      "source": [
+        "from sklearn.metrics import mean_absolute_error\n",
+        "\n",
+        "y_pred = optimized_pipeline_tree.predict(X_test)\n",
+        "mae = mean_absolute_error(y_test, y_pred)\n",
+        "mae"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -9100,25 +9513,45 @@
           "execution_count": 79
         }
       ],
-      "execution_count": 79
+      "execution_count": null
     },
     {
       "cell_type": "markdown",
-      "source": "# LGBMRegressor model",
+      "source": [
+        "# LGBMRegressor model"
+      ],
       "metadata": {
         "id": "2oFPQXoZbDzP"
       }
     },
     {
       "cell_type": "markdown",
-      "source": "Digər boosting modellərinə nisbətən daha sürətlidir və böyük data ilə işləmək üçün əlverişlidir",
+      "source": [
+        "Digər boosting modellərinə nisbətən daha sürətlidir və böyük data ilə işləmək üçün əlverişlidir"
+      ],
       "metadata": {
         "id": "sQRLDKq3YI6j"
       }
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.pipeline import make_pipeline\nfrom lightgbm import LGBMRegressor\n\nlgbm_reg = LGBMRegressor(\n    n_estimators=500,\n    force_row_wise=True,\n    verbosity=0,\n    learning_rate=0.05,\n    max_depth=-1,\n    random_state=42\n)\n\nfull_pipeline_lgbm = make_pipeline(preprocessing, lgbm_reg)\n\nfull_pipeline_lgbm.fit(X_train, y_train)",
+      "source": [
+        "from sklearn.pipeline import make_pipeline\n",
+        "from lightgbm import LGBMRegressor\n",
+        "\n",
+        "lgbm_reg = LGBMRegressor(\n",
+        "    n_estimators=500,\n",
+        "    force_row_wise=True,\n",
+        "    verbosity=0,\n",
+        "    learning_rate=0.05,\n",
+        "    max_depth=-1,\n",
+        "    random_state=42\n",
+        ")\n",
+        "\n",
+        "full_pipeline_lgbm = make_pipeline(preprocessing, lgbm_reg)\n",
+        "\n",
+        "full_pipeline_lgbm.fit(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/",
@@ -9644,11 +10077,13 @@
           "execution_count": 80
         }
       ],
-      "execution_count": 80
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "full_pipeline_lgbm.score(X_train, y_train)",
+      "source": [
+        "full_pipeline_lgbm.score(X_train, y_train)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -9673,11 +10108,13 @@
           "execution_count": 81
         }
       ],
-      "execution_count": 81
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "full_pipeline_lgbm.score(X_test, y_test)",
+      "source": [
+        "full_pipeline_lgbm.score(X_test, y_test)"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -9702,11 +10139,19 @@
           "execution_count": 82
         }
       ],
-      "execution_count": 82
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "import warnings\nfrom sklearn.model_selection import cross_val_score\n\nwarnings.filterwarnings(\"ignore\", category=FutureWarning)\n\nscores = cross_val_score(full_pipeline_lgbm, X, y, cv=3, scoring='r2')\nnp.mean(scores)\n",
+      "source": [
+        "import warnings\n",
+        "from sklearn.model_selection import cross_val_score\n",
+        "\n",
+        "warnings.filterwarnings(\"ignore\", category=FutureWarning)\n",
+        "\n",
+        "scores = cross_val_score(full_pipeline_lgbm, X, y, cv=3, scoring='r2')\n",
+        "np.mean(scores)\n"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -9726,11 +10171,17 @@
           "execution_count": 83
         }
       ],
-      "execution_count": 83
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "from sklearn.metrics import mean_absolute_error\n\ny_pred = full_pipeline_lgbm.predict(X_test)\nmae = mean_absolute_error(y_test, y_pred)\nmae",
+      "source": [
+        "from sklearn.metrics import mean_absolute_error\n",
+        "\n",
+        "y_pred = full_pipeline_lgbm.predict(X_test)\n",
+        "mae = mean_absolute_error(y_test, y_pred)\n",
+        "mae"
+      ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
@@ -9750,11 +10201,11 @@
           "execution_count": 84
         }
       ],
-      "execution_count": 84
+      "execution_count": null
     },
     {
       "cell_type": "code",
-      "source": "",
+      "source": [],
       "metadata": {
         "id": "Z5jKvVwDR-9Y"
       },
